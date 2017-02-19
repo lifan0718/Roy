@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>VeaZer音乐-播放器</title>
+    <link rel="icon" href="images/logo_icon.png">
+    <link rel="stylesheet" href="css/player_style.css">
+    <link href="css/music.css" rel="stylesheet">
+    <link href="css/global.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/canvas.css">
+</head>
+<body style="background: url('images/3.png') no-repeat;background-size: auto">
+<div class="main_bg">
+    <div class="main">
+        <!--导航栏-->
+        <div class="nav">
+            <div class="logo"><a href="#"><img src="images/logo.png"></a></div>
+            <div class="navbar">
+                <ul>
+                    <li><a href="#"><span></span>音乐库</a></li>
+                    <li><a href="#">歌单</a></li>
+                    <div><canvas id='canvas'class="hah"></canvas></div>
+                </ul>
+            </div>
+            <div class="login">登录</div>
+        </div>
+        <!--左侧列表-->
+        <div class="left_div">
+            <ul>
+                <li><a href="#"><span><img src="images/ranking_list.png"></span>排行榜</a></li>
+                <li><a href="#"><span><img src="images/nowplay.png"></span>正在播放</a></li>
+            </ul>
+            <hr>
+            <ul>
+                <li><a href="#"><span><img src="images/like.png"></span>喜欢的音乐</a></li>
+                <li><a href="#"><span><img src="images/song_list.png"></span>我的歌单1</a></li>
+                <li><a href="#"><span><img src="images/song_list.png"></span>我的歌单2</a></li>
+                <li><a href="#"><span><img src="images/song_list.png"></span>我的歌单3</a></li>
+                <li><a href="#"><span><img src="images/song_list.png"></span>我的歌单4</a></li>
+            </ul>
+            <hr>
+            <ul>
+                <li><a href="#"><span><img src="images/collect_list.png"></span>收藏的歌单1</a></li>
+                <li><a href="#"><span><img src="images/collect_list.png"></span>收藏的歌单2</a></li>
+                <li><a href="#"><span><img src="images/collect_list.png"></span>收藏的歌单3</a></li>
+                <li><a href="#"><span><img src="images/collect_list.png"></span>收藏的歌单4</a></li>
+                <li><a href="#"><span><img src="images/collect_list.png"></span>收藏的歌单5</a></li>
+            </ul>
+        </div>
+        <!--中间列表-->
+        <div class="main_div">
+            <div class="play_list_title">
+                <a href="javascript:void(0)" class="fl title_name">播放列表</a>
+                <p href="javascript:void(0)" id="exlist" class="musicList list_num"></p>
+                <a class="playall"  onclick="newPlay()"><span><img style="width: 13px;height: 13px" src="images/play2.png"></span>播放全部</a>
+            </div>
+            <div class="list_title">
+                <div class="list_title1">歌曲名</div>
+                <div class="list_title2">歌手</div>
+                <div class="list_title3">操作</div>
+            </div>
+            <div class="play_list_cont">
+                <ul id="music_list">
+                </ul>
+            </div>
+        </div>
+        <!--右侧列表-->
+        <div class="right_div"></div>
+        <!--播放条-->
+        <div class="player">
+            <div class="play_btn">
+                <a href="javascript:void(0)" class="music_icon prev_song" onclick="playPrev(this)"><!--上一曲--></a>
+                <a href="javascript:void(0)" id="play" onclick="newPlay()" class="music_icon play_tb"><!--播放--></a>
+                <a href="javascript:void(0)" id="pause" onclick="stop()" class="music_icon pause_tb"
+                   style="display:none;"><!--暂停--></a>
+                <a href="javascript:void(0)" class="music_icon next_song" onclick="playNext(this)"><!--下一曲--></a>
+            </div>
+            <div class="player_img">
+                <img src="images/user_img.jpg" style="width: 65px;height: 65px;border: 2px solid #aaa9a8">
+            </div>
+            <div class="player_main">
+                <div class="player_main1">
+                    <div class="col-xs-3" id="musicMsg">
+                        <p class="color_white mt10" style="overflow: hidden;"><span
+                                class="musicName"></span></p>
+                        <p class="fs13 author"></p>
+                        <p class="fs12"><span id="ctimer">00:00</span>/<span id="timer">00:00</span></p>
+                    </div>
+                </div>
+                <div class="player_main2">
+                    <div class="play_rolling" id="play_rolling">
+                        <li id="percent"></li>
+                    </div>
+                </div>
+            </div>
+            <div class="player_right">
+                <div class="player_right1" id="musicMsg1">
+                    <a href="javascript:void(0)" class="music_icon oder_cycle cycle_mode" id="oder_cycle"
+                       onclick="playModeTab(1)"><!--顺序循环--></a>
+                    <a href="javascript:void(0)" class="music_icon random_cycle cycle_mode" id="random_cycle"
+                       onclick="playModeTab(2)" style="display: none;"><!--随机--></a>
+                    <a href="javascript:void(0)" class="music_icon single_cycle cycle_mode" id="single_cycle"
+                       onclick="playModeTab(3)" style="display: none;"><!--单曲循环--></a>
+                    <p class="playMode" style="display: none"><span ></span></p>
+                </div>
+                <div class="player_right2">
+                    <a href="javascript:void(0)" class="music_icon volume" id="muted" onclick="muted(false)">
+                        <!--音量--></a>
+                    <a href="javascript:void(0)" class="music_icon volume" id="unMuted" onclick="muted(true)">
+                        <!--音量--></a>
+                    <div style="" class="v_progress" id="v_progress">
+                        <a href="javascript:void(0)" class=" v_percent" id="v_percent"><!--音量进度--></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="js/audio.prototype.js"></script>
+<script type="text/javascript" src="js/audio.js"></script>
+<script src="js/canvas.js"></script>
+</body>
+</html>
