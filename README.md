@@ -49,5 +49,5 @@
 ### 只能输入数字和小数点，防粘贴：
 -
 ```javascript
-<input type=""text" onkeyup="value=value.replace(/[^0-9.]/g,''),dxfqlld();" onpaste="value=value.replace(/[^0-9.]/g,'')" oncontextmenu="value=value.replace(/[^0-9.]/g,'')" />
+<input type=""text" onkeyup="value=value.replace(/[^0-9.]/g,''),dxfqlld();" onpaste="value=value.replace(/[^0-9.]/g,'')" oncontextmenu="value=value.replace(/[^0-9.]/g,'')" >
 ```
